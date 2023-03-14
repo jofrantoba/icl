@@ -10,6 +10,7 @@
     <packaging>jar</packaging>
     <properties>
         <exec.mainClass>gob.pe.icl.service.Service</exec.mainClass>
+        <version.maven-source-plugin>3.2.1</version.maven-source-plugin>    
         <version.spring-context>5.3.14</version.spring-context>       
     </properties>
     <dependencies>
@@ -45,4 +46,21 @@
             <version>${version.spring-context}</version>              
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${version.maven-source-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
