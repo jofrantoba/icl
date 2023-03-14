@@ -13,6 +13,7 @@
         <version.jofrantoba-model-jpa>1.0.0</version.jofrantoba-model-jpa>
         <version.maven-source-plugin>3.2.1</version.maven-source-plugin>    
         <version.spring-context>5.3.14</version.spring-context>         
+        <version.slf4j-api>1.7.32</version.slf4j-api>
     </properties>
     <dependencies>
         <dependency>
@@ -48,8 +49,8 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version>
+            <artifactId>slf4j-api</artifactId>            
+            <version>${version.slf4j-api}</version>
         </dependency>
     </dependencies>
     <build>
