@@ -12,7 +12,8 @@
         <exec.mainClass>gob.pe.icl.entity.Entity</exec.mainClass>
         <version.maven-source-plugin>3.2.1</version.maven-source-plugin>      
         <version.hibernate-core>5.4.32.Final</version.hibernate-core> 
-        <version.jakarta.validation-api>2.0.2</version.jakarta.validation-api>       
+        <version.jakarta.validation-api>2.0.2</version.jakarta.validation-api>
+        <version.spring-context>5.3.14</version.spring-context>       
     </properties>
     <dependencies>                                                        
         <dependency>
@@ -26,6 +27,11 @@
             <version>${version.jakarta.validation-api}</version>
             <type>jar</type>
         </dependency>        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${version.spring-context}</version>              
+        </dependency>
     </dependencies>
     <build>
         <plugins>

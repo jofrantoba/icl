@@ -18,7 +18,7 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
-@ComponentScan(basePackages = {"gob.pe.icl.zuul"})
+@ComponentScan(basePackages = {"gob.pe.icl.zuulone"})
 public class Application {
 
     @PostConstruct
