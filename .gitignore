@@ -1,3 +1,5 @@
 .class
 **/target/**
 **idea**
+/api-user/target/
+/api-car/target/

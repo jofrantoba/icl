@@ -10,6 +10,13 @@
     <packaging>jar</packaging>
     <properties>
         <exec.mainClass>gob.pe.icl.api.user.ApiUser</exec.mainClass>
+        <version.spring-boot-dependencies>2.6.2</version.spring-boot-dependencies>
+        <spring-cloud.version>2021.0.0</spring-cloud.version>   
+        <version.spring-boot-maven-plugin>2.6.2</version.spring-boot-maven-plugin>     
+        <version.spring-boot-starter-actuator>2.6.2</version.spring-boot-starter-actuator>
+        <version.spring-cloud-starter-bootstrap>3.1.0</version.spring-cloud-starter-bootstrap>
+        <version.spring-cloud-starter-config>3.1.0</version.spring-cloud-starter-config>
+        <version.spring-cloud-starter-netflix-eureka-client>3.1.0</version.spring-cloud-starter-netflix-eureka-client>
     </properties>
     <dependencies>
         <dependency>
@@ -38,5 +45,34 @@
             <version>${project.version}</version>
             <classifier>sources</classifier>                  
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${version.spring-boot-starter-actuator}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <version>${version.spring-cloud-starter-bootstrap}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+            <version>${version.spring-cloud-starter-config}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${version.spring-cloud-starter-netflix-eureka-client}</version>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${version.spring-boot-maven-plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
