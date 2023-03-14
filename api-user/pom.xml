@@ -43,12 +43,24 @@
             <version>${project.version}</version> 
             <type>jar</type>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>  <!-- declare the exclusion here -->
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions> 
         </dependency>                        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>entity</artifactId>
             <version>${project.version}</version>
-            <classifier>sources</classifier>                  
+            <classifier>sources</classifier> 
+            <exclusions>
+                <exclusion>  <!-- declare the exclusion here -->
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>                 
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -56,12 +68,24 @@
             <version>${project.version}</version> 
             <type>jar</type>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>  <!-- declare the exclusion here -->
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>                        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>service</artifactId>
             <version>${project.version}</version>
             <classifier>sources</classifier>                  
+            <exclusions>
+                <exclusion>  <!-- declare the exclusion here -->
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>   
         <dependency>
             <groupId>org.springframework.boot</groupId>
