@@ -7,6 +7,7 @@ package gob.pe.icl.service.impl;
 import com.jofrantoba.model.jpa.shared.UnknownException;
 import gob.pe.icl.entity.User;
 import gob.pe.icl.service.inter.InterServiceUser;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 
@@ -14,10 +15,12 @@ import org.junit.jupiter.api.Test;
  *
  * @author Usuario
  */
+@Log4j2
 public class TestServiceUserImpl extends TestBaseService {
 
     @Test
     void createEntity1() throws UnknownException {
+        log.info("Message");
         InterServiceUser service = contextService.getBean(ServiceUserImpl.class);
         User entity = contextEntity.getBean(User.class);
         entity.setName("Jonathan"); 

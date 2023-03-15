@@ -5,6 +5,7 @@
 package gob.pe.icl.entity;
 
 import gob.pe.icl.config.ConfigEntity;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  *
  * @author Usuario
  */
-@Slf4j
+@Log4j2
 public class TestUser extends TestBaseEntity{
     
     @Test
