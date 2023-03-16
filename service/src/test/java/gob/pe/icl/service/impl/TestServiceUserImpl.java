@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 public class TestServiceUserImpl extends TestBaseService {
 
     @Test
-    void createEntity1() throws UnknownException {
+    void createEntity1() throws Exception {
         log.info("Message");
         InterServiceUser service = contextService.getBean(ServiceUserImpl.class);
         User entity = contextEntity.getBean(User.class);
