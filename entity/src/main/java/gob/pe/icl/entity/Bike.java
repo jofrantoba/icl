@@ -29,5 +29,5 @@ public class Bike extends GlobalEntityPkNumeric implements Serializable{
     @Column(name = "model")
     private String model;
     @Column(name = "id_user")
-    private Long idUser;
+    private int idUser;
 }

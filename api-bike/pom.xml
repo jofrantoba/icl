@@ -6,10 +6,10 @@
         <artifactId>icl</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>api-car</artifactId>
+    <artifactId>api-bike</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <exec.mainClass>gob.pe.icl.api.car.Application</exec.mainClass>
+        <exec.mainClass>gob.pe.icl.api.bike.Application</exec.mainClass>
         <version.spring-boot-dependencies>2.6.2</version.spring-boot-dependencies>
         <spring-cloud.version>2021.0.0</spring-cloud.version>   
         <version.spring-boot-maven-plugin>2.6.2</version.spring-boot-maven-plugin>     

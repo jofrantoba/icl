@@ -5,12 +5,12 @@
 package gob.pe.icl.dao.inter;
 
 import com.jofrantoba.model.jpa.daoentity.InterCrud;
-import gob.pe.icl.entity.Bike;
+import gob.pe.icl.entity.Car;
 
 /**
  *
  * @author Usuario
  */
-public interface InterDaoBike extends InterCrud<Bike>{
-
+public interface InterDaoCar extends InterCrud<Car>{
+    
 }

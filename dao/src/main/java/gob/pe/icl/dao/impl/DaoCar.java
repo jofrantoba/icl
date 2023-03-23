@@ -5,8 +5,8 @@
 package gob.pe.icl.dao.impl;
 
 import com.jofrantoba.model.jpa.daoentity.AbstractJpaDao;
-import gob.pe.icl.dao.inter.InterDaoBike;
-import gob.pe.icl.entity.Bike;
+import gob.pe.icl.dao.inter.InterDaoCar;
+import gob.pe.icl.entity.Car;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -16,13 +16,12 @@ import org.springframework.stereotype.Repository;
  * @author Usuario
  */
 @Repository
-public class DaoBike extends AbstractJpaDao<Bike>
-        implements InterDaoBike {
-
-    public DaoBike(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+public class DaoCar extends AbstractJpaDao<Car>
+        implements InterDaoCar {
+    
+    public DaoCar(@Qualifier("sessionFactory")SessionFactory sessionFactory) {
         super();
-        setClazz(Bike.class);
+        setClazz(Car.class);
         this.setSessionFactory(sessionFactory);
-    }    
-
+    }
 }

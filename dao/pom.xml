@@ -17,6 +17,7 @@
         <version.slf4j-simple>1.7.32</version.slf4j-simple>
         <version.log4j-api>2.17.0</version.log4j-api>
         <version.log4j-core>2.17.0</version.log4j-core>
+        <version.jackson-databind>2.13.1</version.jackson-databind>
     </properties>
     <dependencies>
         <dependency>
@@ -69,6 +70,11 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${version.log4j-core}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${version.jackson-databind}</version>
         </dependency>
     </dependencies>
     <build>

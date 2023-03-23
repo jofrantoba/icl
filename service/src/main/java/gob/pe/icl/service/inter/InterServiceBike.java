@@ -4,15 +4,14 @@
  */
 package gob.pe.icl.service.inter;
 
-import gob.pe.icl.entity.User;
-import java.util.Map;
-
+import gob.pe.icl.entity.Bike;
+import java.util.List;
 /**
  *
  * @author Usuario
  */
-public interface InterServiceUser {
-    User saveUser(User entidad)throws Exception;
-    User getUserById(long id)throws Exception;    
-    Map<String, Object> getUserAndVehicles(int userId) throws Exception;
+public interface InterServiceBike {
+    Bike saveBike(Bike entidad)throws Exception;
+    Bike getBikeById(long id)throws Exception;
+    List<Bike> getBikeByUserId(int userId)throws Exception;
 }
