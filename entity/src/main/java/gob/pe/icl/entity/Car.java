@@ -28,6 +28,6 @@ public class Car extends GlobalEntityPkNumeric {
     private String brand;
     @Column(name = "model")
     private String model;
-    @Column(name = "user_id")
-    private int userId;
+    @Column(name = "id_user")
+    private int idUser;
 }

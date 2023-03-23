@@ -70,7 +70,7 @@ public class ServiceCarImpl implements InterServiceCar {
     public List<Car> getCarByUserId(int userId) throws Exception {
         try {            
             String[] mapOrder = {"model:desc"};
-            return (List<Car>)dao.allFields("=:userId:"+userId, mapOrder);            
+            return (List<Car>)dao.allFields("=:idUser:"+userId, mapOrder);            
         } catch (Exception ex) {
             if (environment.getProperty("environment").equalsIgnoreCase("dev")) {
                 UnknownException excepcion = new UnknownException(ServiceBikeImpl.class, ex.getMessage(), ex);

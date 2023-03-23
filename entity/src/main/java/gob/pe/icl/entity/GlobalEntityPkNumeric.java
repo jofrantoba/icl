@@ -23,11 +23,11 @@ public abstract class GlobalEntityPkNumeric implements Serializable{
     @Id    
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")  
-    private Long id;
+    protected Long id;
     @Column(name = "version")
-    private Long version;    
+    protected Long version;    
     @Column(name = "is_persistente")
-    private Boolean isPersistente;
+    protected Boolean isPersistente;
     @Transient   
-    private String operacion;
+    protected String operacion;
 }

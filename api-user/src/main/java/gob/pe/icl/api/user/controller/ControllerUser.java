@@ -56,7 +56,7 @@ public class ControllerUser {
     public ResponseEntity<Car> saveCar(@PathVariable("userId") int userId, @RequestBody Car car) throws Exception {
         if(interServiceUser.getUserById(userId) == null)
             return ResponseEntity.notFound().build();
-        car.setUserId(userId);
+        car.setIdUser(userId);
         Car carNew = feignCar.saveCar(car);
         return ResponseEntity.ok(carNew);
     }

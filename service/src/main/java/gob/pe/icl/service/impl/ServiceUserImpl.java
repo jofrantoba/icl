@@ -67,7 +67,9 @@ public class ServiceUserImpl implements InterServiceUser {
      @Override
     public User getUserById(long id) throws Exception {        
         try {            
+            Transaction tx=dao.getSession().beginTransaction();
             User user = dao.findById(id); 
+            tx.commit();
             return user;
         } catch (Exception ex) {
             if (environment.getProperty("environment").equalsIgnoreCase("dev")) {
@@ -81,6 +83,7 @@ public class ServiceUserImpl implements InterServiceUser {
     @Override
     public Map<String, Object> getUserAndVehicles(int userId) throws Exception {
         Map<String, Object> result = new HashMap<>();
+        Transaction tx=dao.getSession().beginTransaction();        
         User user = dao.findById(userId);
         if(user == null) {
             result.put("Mensaje", "no existe el usuario");
@@ -88,16 +91,17 @@ public class ServiceUserImpl implements InterServiceUser {
         }
         result.put("User", user);
         String[] mapOrder = {"model:desc"};
-        List<Car> cars =(List<Car>)daoCar.allFields("=:userId:"+userId, mapOrder);                    
+        List<Car> cars =(List<Car>)daoCar.allFields("=:idUser:"+userId, mapOrder);                    
         if(cars.isEmpty())
             result.put("Cars", "ese user no tiene coches");
         else
             result.put("Cars", cars);
-        List<Bike> bikes =(List<Bike>)daoBike.allFields("=:userId:"+userId, mapOrder);                    
+        List<Bike> bikes =(List<Bike>)daoBike.allFields("=:idUser:"+userId, mapOrder);                    
         if(bikes.isEmpty())
             result.put("Bikes", "ese user no tiene motos");
         else
             result.put("Bikes", bikes);
+        tx.commit();
         return result;
     }
 

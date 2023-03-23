@@ -17,6 +17,8 @@
         <version.spring-cloud-starter-bootstrap>3.1.0</version.spring-cloud-starter-bootstrap>
         <version.spring-cloud-starter-config>3.1.0</version.spring-cloud-starter-config>
         <version.spring-cloud-starter-netflix-eureka-client>3.1.0</version.spring-cloud-starter-netflix-eureka-client>
+        <version.junit-jupiter-engine>5.7.2</version.junit-jupiter-engine>
+        <version.mockito-junit-jupiter>3.11.2</version.mockito-junit-jupiter>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -48,13 +50,17 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
-            </exclusions> 
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>                        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>entity</artifactId>
             <version>${project.version}</version>
-            <classifier>sources</classifier> 
+            <classifier>sources</classifier>    
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -64,7 +70,7 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-simple</artifactId>
                 </exclusion>
-            </exclusions>                 
+            </exclusions>             
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -87,7 +93,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>service</artifactId>
             <version>${project.version}</version>
-            <classifier>sources</classifier>                  
+            <classifier>sources</classifier>  
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -97,50 +103,57 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-simple</artifactId>
                 </exclusion>
-            </exclusions>
-        </dependency>   
+            </exclusions>                
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>                                 
+        </dependency>         
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        </dependency>           
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>   
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>            
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${version.junit-jupiter-engine}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${version.mockito-junit-jupiter}</version>
+            <scope>test</scope>
+        </dependency>     
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>                    
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>     
+        </dependency>                     
     </dependencies>   
-     <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
