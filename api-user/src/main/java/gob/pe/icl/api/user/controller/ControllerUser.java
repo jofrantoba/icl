@@ -46,7 +46,7 @@ public class ControllerUser {
         return ResponseEntity.status(HttpStatus.CREATED).body(interServiceUser.saveUser(user));        
     }
     
-    @PostMapping(value="/{id}")
+    @PostMapping(value="/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     public String getById(@PathVariable("id") int id) throws Exception{        
         User user = interServiceUser.getUserById(id);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -76,7 +76,8 @@ public class ControllerUser {
         return  ResponseEntity.ok(bikeNew);
     }
     
-    @PostMapping("/getAll/{userId}")
+    @PostMapping(value="/getAll/{userId}",
+            produces = {MediaType.APPLICATION_JSON_VALUE})
     public String getAllVehicles(@PathVariable("userId") int userId) throws Exception {
         Map<String, Object> result = interServiceUser.getUserAndVehicles(userId);
         ObjectMapper objectMapper = new ObjectMapper();
