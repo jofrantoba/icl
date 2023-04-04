@@ -5,3 +5,5 @@
 /api-car/target/
 /process/target/
 /api-bike/target/
+/oauth/target/
+/jwt/target/

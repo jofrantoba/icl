@@ -4,9 +4,12 @@
  */
 package gob.pe.icl.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +31,8 @@ public class Bike extends GlobalEntityPkNumeric implements Serializable{
     private String brand;
     @Column(name = "model")
     private String model;
-    @Column(name = "id_user")
-    private int idUser;
+    @JsonIgnoreProperties({"cars","bikes"})  
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private User user;
 }

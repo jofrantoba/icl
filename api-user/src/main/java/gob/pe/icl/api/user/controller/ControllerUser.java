@@ -4,6 +4,8 @@
  */
 package gob.pe.icl.api.user.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import gob.pe.icl.api.user.feign.FeignBike;
 import gob.pe.icl.api.user.feign.FeignCar;
 import gob.pe.icl.entity.Bike;
@@ -45,35 +47,42 @@ public class ControllerUser {
     }
     
     @PostMapping(value="/{id}")
-    public ResponseEntity<User> getById(@PathVariable("id") int id) throws Exception{        
+    public String getById(@PathVariable("id") int id) throws Exception{        
         User user = interServiceUser.getUserById(id);
-        if(user == null)
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(user);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);        
+        String json = objectMapper.writeValueAsString(user);
+        return json;        
     }
     
     @PostMapping("/savecar/{userId}")
     public ResponseEntity<Car> saveCar(@PathVariable("userId") int userId, @RequestBody Car car) throws Exception {
-        if(interServiceUser.getUserById(userId) == null)
+        User user=interServiceUser.getUserById(userId);
+        if(user == null)
             return ResponseEntity.notFound().build();
-        car.setIdUser(userId);
+        
+        car.setUser(user);
         Car carNew = feignCar.saveCar(car);
         return ResponseEntity.ok(carNew);
     }
 
     @PostMapping("/savebike/{userId}")
     public ResponseEntity<Bike> saveBike(@PathVariable("userId") int userId, @RequestBody Bike bike) throws Exception {
-        if(interServiceUser.getUserById(userId) == null)
+        User user=interServiceUser.getUserById(userId);
+        if(user == null)
             return ResponseEntity.notFound().build();
-        bike.setIdUser(userId);
+        bike.setUser(user);
         Bike bikeNew = feignBike.saveBike(bike);
         return  ResponseEntity.ok(bikeNew);
     }
     
     @PostMapping("/getAll/{userId}")
-    public ResponseEntity<Map<String, Object>> getAllVehicles(@PathVariable("userId") int userId) throws Exception {
+    public String getAllVehicles(@PathVariable("userId") int userId) throws Exception {
         Map<String, Object> result = interServiceUser.getUserAndVehicles(userId);
-        return ResponseEntity.ok(result);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);        
+        String json = objectMapper.writeValueAsString(result);
+        return json;        
     }
 
     
