@@ -69,10 +69,16 @@ public class ServiceBikeImpl implements InterServiceBike {
 
     @Override
     public List<Bike> getBikeByUserId(int userId) throws Exception {        
+        Transaction tx = dao.getSession().beginTransaction();
         try {            
-            String[] mapOrder = {"model:desc"};
-            return (List<Bike>)dao.allFields("=:idUser:"+userId, mapOrder);            
+            String[] mapOrder = {"base.model:desc"};
+            List<Bike> lista=(List<Bike>)dao.allFieldsJoinFilter("left:user","=:user.id:"+userId, mapOrder);            
+            tx.commit();
+            return lista; 
         } catch (Exception ex) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
             if (environment.getProperty("environment").equalsIgnoreCase("dev")) {
                 UnknownException excepcion = new UnknownException(ServiceBikeImpl.class, ex.getMessage(), ex);
                 excepcion.traceLog(true);

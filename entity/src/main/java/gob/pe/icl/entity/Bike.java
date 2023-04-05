@@ -5,6 +5,7 @@
 package gob.pe.icl.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Usuario
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Component
 @Scope("prototype")
 @Data

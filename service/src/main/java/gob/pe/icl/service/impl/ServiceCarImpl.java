@@ -54,10 +54,15 @@ public class ServiceCarImpl implements InterServiceCar {
 
     @Override
     public Car getCarById(long id) throws Exception {
+         Transaction tx = dao.getSession().beginTransaction();
         try {            
             Car car = dao.findById(id); 
+            tx.commit();
             return car;
         } catch (Exception ex) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
             if (environment.getProperty("environment").equalsIgnoreCase("dev")) {
                 UnknownException excepcion = new UnknownException(ServiceBikeImpl.class, ex.getMessage(), ex);
                 excepcion.traceLog(true);
