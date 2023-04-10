@@ -25,7 +25,6 @@
         <module>api-car</module>
         <module>api-bike</module>
         <module>oauth</module>
-        <module>jwt</module>
     </modules>
     <properties>
     </properties>

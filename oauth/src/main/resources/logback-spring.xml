@@ -3,7 +3,7 @@
     <springProfile name="prd">
         <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
         <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
-        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-gateway.log"/>        
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-oauth.log"/>        
         <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
         <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -29,7 +29,7 @@
     <springProfile name="tst">
         <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
         <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
-        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-gateway.log"/>        
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-oauth.log"/>        
         <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
         <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -55,7 +55,7 @@
     <springProfile name="qal">
         <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
         <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
-        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-gateway.log"/>        
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-oauth.log"/>        
         <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
         <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -81,7 +81,7 @@
     <springProfile name="dev">
         <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
         <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
-        <property name="LOG_FILE" value="c:/log/servidor-gateway.log"/>    
+        <property name="LOG_FILE" value="c:/log/servidor-oauth.log"/>    
         <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
         <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -101,7 +101,7 @@
                 <maxHistory>50</maxHistory>
             </rollingPolicy>
         </appender>    
-        <root level="INFO">
+        <root level="DEBUG">
             <appender-ref ref="appenderConsole" />
             <appender-ref ref="appenderFile" />
         </root>
