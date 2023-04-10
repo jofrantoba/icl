@@ -67,7 +67,7 @@ public class AuthServerConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient rc1 = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("icl")
-                .clientSecret("icl")
+                .clientSecret("{noop}icl")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)

@@ -101,7 +101,7 @@
                 <maxHistory>50</maxHistory>
             </rollingPolicy>
         </appender>    
-        <root level="DEBUG">
+        <root level="trace">
             <appender-ref ref="appenderConsole" />
             <appender-ref ref="appenderFile" />
         </root>

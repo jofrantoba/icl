@@ -36,6 +36,8 @@ public class User extends GlobalEntityPkNumeric implements Serializable {
     private String name;
     @Column(name = "email")
     private String email;
+    @Column(name = "clave")
+    private String clave;
     @JsonIgnoreProperties({"user"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Collection<Car> cars;
