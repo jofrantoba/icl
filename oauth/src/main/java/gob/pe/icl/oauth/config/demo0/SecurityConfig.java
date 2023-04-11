@@ -14,11 +14,14 @@ import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.session.SessionRegistry;
@@ -54,8 +57,11 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 //@EnableWebSecurity
 @Configuration/*(proxyBeanMethods = false)*/
 public class SecurityConfig {
+    
+    @Autowired
+    UserDetailsService details;
 
-    private static final String CUSTOM_CONSENT_PAGE_URI = "/oauth2/consent";
+    //private static final String CUSTOM_CONSENT_PAGE_URI = "/oauth2/consent";
 
     /*@Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -135,24 +141,24 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
+    /*@Bean
+    public UserDetailsService userDetailsService() {*/
         /*UserDetails userDetails = User.withDefaultPasswordEncoder()
                 .username("jofrantoba")
                 .password("jofrantoba")
                 .roles("USER")
                 .build();*/
-        UserDetails userDetails = User.withUsername("jofrantoba").password("jofrantoba").authorities("read")
+        /*UserDetails userDetails = User.withUsername("jofrantoba").password("jofrantoba").authorities("read")
                 .roles("USER")
                 .build();
 
         return new InMemoryUserDetailsManager(userDetails);
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
-    }
+    }*/
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
@@ -226,5 +232,11 @@ public class SecurityConfig {
     HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
-
+    
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(details);
+        auth.authenticationProvider(provider);
+    }
 }

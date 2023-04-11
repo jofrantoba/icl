@@ -25,6 +25,7 @@
         <module>api-car</module>
         <module>api-bike</module>
         <module>oauth</module>
+        <module>api-open</module>
     </modules>
     <properties>
     </properties>

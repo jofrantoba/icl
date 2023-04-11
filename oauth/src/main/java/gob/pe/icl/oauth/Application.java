@@ -39,7 +39,7 @@ public class Application {
         return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
     }
     
-    private static String createCodeVerifier(){
+    private static String createCodeVerifier(){        
         StringKeyGenerator secureKeyGenerator =
         new Base64StringKeyGenerator(Base64.getUrlEncoder().withoutPadding(), 96);
         return secureKeyGenerator.generateKey();
