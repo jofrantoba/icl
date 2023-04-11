@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "daaff22f-5265-4650-9c73-294fa91d5f97",
+		"name": "DEMOMICROSERVICIOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7376868"
+	},
+	"item": [
+		{
+			"name": "API USER",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Bike API User Gateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"bike postgres2\", \"model\":\"23223\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/savebike/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"savebike",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Bike API User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"pruebabike\", \"model\":\"1\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/savebike/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"savebike",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Car from API User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"prueba\", \"model\":\"1\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/savecar/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"savecar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Car from API User Gateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"pruebacarropstgres\", \"model\":\"1\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/savecar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"savecar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Gateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/getAll/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"getAll",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"jordan\", \"email\":\"test@gmail\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/user/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"user",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API CAR",
+			"item": [
+				{
+					"name": "Cars by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:62971/api/car/1",
+							"host": [
+								"localhost"
+							],
+							"port": "62971",
+							"path": [
+								"api",
+								"car",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"instacias60296\", \"model\":\"sd\",\"userId\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:60296/api/car/save",
+							"host": [
+								"localhost"
+							],
+							"port": "60296",
+							"path": [
+								"api",
+								"car",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Car Gateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"brand\":\"instacias60296\", \"model\":\"sd\",\"userId\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:60296/api/car/save",
+							"host": [
+								"localhost"
+							],
+							"port": "60296",
+							"path": [
+								"api",
+								"car",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API BIKE",
+			"item": [
+				{
+					"name": "Bike by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:55814/api/bike/byuser/1",
+							"host": [
+								"localhost"
+							],
+							"port": "55814",
+							"path": [
+								"api",
+								"bike",
+								"byuser",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAUTH",
+			"item": [
+				{
+					"name": "authorization_code_param",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "icl",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "icl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/oauth2/token?client_id=icl&grant_type=authorization_code&code=tFdawhFYmCLkcIgCvoe0HaC3GESS0JesoTaEaCy8dnKq0_LHWpqAmRbeZlbj0kI4QwdTcMP4thWqvXd0bSD_QGKXaxiomqq1J_KUKt4dtRcG5jI2WcxPe2HvcYKnzzJt&code_verifier=7Yw5wYKfwblZObllhNooOPGC8lwX_Vw4i3qYFt6-_Yeu37q0JKJKQszFn3SiHeDkhhI7jf0P_r1Fjtcxu1mTi-xp-MSJIKJ-RSIckzWv3IZxyDfFgyhMDhMIc7w6MPRZ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"oauth2",
+								"token"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "icl"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code"
+								},
+								{
+									"key": "code",
+									"value": "tFdawhFYmCLkcIgCvoe0HaC3GESS0JesoTaEaCy8dnKq0_LHWpqAmRbeZlbj0kI4QwdTcMP4thWqvXd0bSD_QGKXaxiomqq1J_KUKt4dtRcG5jI2WcxPe2HvcYKnzzJt"
+								},
+								{
+									"key": "code_verifier",
+									"value": "7Yw5wYKfwblZObllhNooOPGC8lwX_Vw4i3qYFt6-_Yeu37q0JKJKQszFn3SiHeDkhhI7jf0P_r1Fjtcxu1mTi-xp-MSJIKJ-RSIckzWv3IZxyDfFgyhMDhMIc7w6MPRZ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authorization_code_form",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "icl",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "icl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "icl",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "vBmD0DPlriQybJwwsdwidw0cYYetK3FXNpnY0YqHsrGS_ckwq2bg0OKdq-O6rqnAz9IfsUPCnmYtMLMKob4X__zGsvfyjkqHDtBCn9_peONeMiXUdzsaowf20eR6p1wj",
+									"type": "text"
+								},
+								{
+									"key": "code_verifier",
+									"value": "t50KdWIhRWc9lIV7vz7oHD_47nP-jWuTxL_Jvd8irQbi5FaibIJ3yuJTyRxXFdrzZCkPOr2lRecTZjMOp9DtwecrcOWpQpToN20mNOj8FwfDGC9uB_ozz_JuRwhVQgGJ",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://www.develtrex.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8085/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client_credentials",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "icl",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "icl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "icl",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "CI3WCyuKCt_KRD3-hpjOhHx23lgy5SdwAw5pdtu9aiVX5nHcNCbbSyIzuvRiRLPusaehGBO78s5sTKGISf8nqHQvroy4XAr-xv7MvRCPwcbRIIxO8aa7ujyhQe5LRKRO",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "code_verifier",
+									"value": "7Yw5wYKfwblZObllhNooOPGC8lwX_Vw4i3qYFt6-_Yeu37q0JKJKQszFn3SiHeDkhhI7jf0P_r1Fjtcxu1mTi-xp-MSJIKJ-RSIckzWv3IZxyDfFgyhMDhMIc7w6MPRZ",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8085/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh_token_form",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "icl",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "icl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/oauth2/token?client_id=icl&grant_type=refresh_token&refresh_token=WJe6MDFDq6L6QFqI6iecRVs2WVOnqkjEZbT9Sdrmu46xoL8wZuzPtZKDDiNzDtqHYzJlPR1OZ6YLKJdx1iCBqbYkHoflBRaD2htN5an2SflyRykBpVip935zhXbGtTxi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"oauth2",
+								"token"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "icl"
+								},
+								{
+									"key": "grant_type",
+									"value": "refresh_token"
+								},
+								{
+									"key": "refresh_token",
+									"value": "WJe6MDFDq6L6QFqI6iecRVs2WVOnqkjEZbT9Sdrmu46xoL8wZuzPtZKDDiNzDtqHYzJlPR1OZ6YLKJdx1iCBqbYkHoflBRaD2htN5an2SflyRykBpVip935zhXbGtTxi"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

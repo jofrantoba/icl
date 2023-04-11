@@ -16,10 +16,13 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,6 +32,8 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -39,14 +44,45 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 /**
  *
  * @author Usuario
  */
 //@EnableWebSecurity
-@Configuration
+@Configuration/*(proxyBeanMethods = false)*/
 public class SecurityConfig {
+
+    private static final String CUSTOM_CONSENT_PAGE_URI = "/oauth2/consent";
+
+    /*@Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
+        OAuth2AuthorizationServerConfigurer authorizationServerConfigurer
+                = new OAuth2AuthorizationServerConfigurer();
+        authorizationServerConfigurer
+                .authorizationEndpoint(authorizationEndpoint
+                        -> authorizationEndpoint.consentPage(CUSTOM_CONSENT_PAGE_URI))
+                .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
+
+        RequestMatcher endpointsMatcher = authorizationServerConfigurer
+                .getEndpointsMatcher();
+
+        http
+                .securityMatcher(endpointsMatcher)
+                .authorizeHttpRequests(authorize
+                        -> authorize.anyRequest().authenticated()
+                )
+                .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
+                .exceptionHandling(exceptions
+                        -> exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+                )
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+                .apply(authorizationServerConfigurer);
+        return http.build();
+    }*/
 
     @Bean
     @Order(1)
@@ -65,7 +101,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /*@Bean
+ /*@Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
             throws Exception {
@@ -84,7 +120,6 @@ public class SecurityConfig {
 
         return http.build();
     }*/
-
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
@@ -113,9 +148,9 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(userDetails);
     }
-    
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
@@ -123,12 +158,12 @@ public class SecurityConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("icl")
-                .clientSecret("icl")                
+                .clientSecret("icl")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                //.redirectUri("http://127.0.0.1:8085/login/oauth2/code/icl")
+                .redirectUri("http://127.0.0.1:8085/login/oauth2/code/icl-oidc")               
                 .redirectUri("http://127.0.0.1:8085/authorized")
                 .redirectUri("https://www.develtrex.com")
                 .scope(OidcScopes.OPENID)
@@ -174,6 +209,22 @@ public class SecurityConfig {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder().issuer("http://localhost:8085").build();
+    }
+
+    @Bean
+    public OAuth2AuthorizationConsentService authorizationConsentService() {
+        // Will be used by the ConsentController
+        return new InMemoryOAuth2AuthorizationConsentService();
+    }
+
+    @Bean
+    SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    @Bean
+    HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
     }
 
 }
