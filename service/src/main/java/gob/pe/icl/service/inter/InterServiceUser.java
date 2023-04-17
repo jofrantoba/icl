@@ -14,5 +14,6 @@ import java.util.Map;
 public interface InterServiceUser {
     User saveUser(User entidad)throws Exception;
     User getUserById(long id)throws Exception;    
+    User findUsername(String username)throws Exception;
     Map<String, Object> getUserAndVehicles(int userId) throws Exception;
 }

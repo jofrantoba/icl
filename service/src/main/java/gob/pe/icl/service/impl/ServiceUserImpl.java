@@ -12,6 +12,7 @@ import gob.pe.icl.entity.Bike;
 import gob.pe.icl.entity.Car;
 import gob.pe.icl.entity.User;
 import gob.pe.icl.service.inter.InterServiceUser;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -107,6 +108,24 @@ public class ServiceUserImpl implements InterServiceUser {
         dao.getSession().detach(user);
         tx.commit();
         return result;
+    }
+
+    @Override
+    public User findUsername(String username)throws Exception{
+       try {            
+            Transaction tx=dao.getSession().beginTransaction();
+            String mapFilter="equal:username:"+username;            
+            List<User> user = (List)dao.allFields(mapFilter, null); 
+            //dao.getSession().detach(user);
+            tx.commit();
+            return user.get(0);
+        } catch (Exception ex) {
+            if (environment.getProperty("environment").equalsIgnoreCase("dev")) {
+                UnknownException excepcion = new UnknownException(ServiceUserImpl.class, ex.getMessage(), ex);
+                excepcion.traceLog(true);
+            }
+            throw ex;
+        }
     }
 
 }

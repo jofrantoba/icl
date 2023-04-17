@@ -6,6 +6,7 @@ package gob.pe.icl.api.user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import gob.pe.icl.api.user.feign.FeignBike;
 import gob.pe.icl.api.user.feign.FeignCar;
 import gob.pe.icl.entity.Bike;
@@ -85,6 +86,19 @@ public class ControllerUser {
         String json = objectMapper.writeValueAsString(result);
         return json;        
     }
+    
+    @PostMapping(value="/find/{username}",
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public String getUserByUsername(@PathVariable("username") String username) throws Exception {
+        User user = interServiceUser.findUsername(username);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Hibernate5Module());
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);        
+        String json = objectMapper.writeValueAsString(user);
+        return json;        
+    }
+    
+    
 
     
 }

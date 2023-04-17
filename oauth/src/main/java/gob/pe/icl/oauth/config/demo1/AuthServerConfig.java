@@ -34,7 +34,7 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
  *
  * @author Usuario
  */
-//@Configuration
+@Configuration
 public class AuthServerConfig {
 
     private final KeyManager keyManager;

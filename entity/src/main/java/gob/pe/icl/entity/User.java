@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Usuario
  */
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonInclude(Include.NON_NULL)
 @Component
 @Scope("prototype")
@@ -36,8 +37,10 @@ public class User extends GlobalEntityPkNumeric implements Serializable {
     private String name;
     @Column(name = "email")
     private String email;
-    @Column(name = "clave")
-    private String clave;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
+    private String password;
     @JsonIgnoreProperties({"user"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Collection<Car> cars;

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author Usuario
  */
-@Controller
+//@Controller
 public class AuthorizationConsentController {
 	private final RegisteredClientRepository registeredClientRepository;
 	private final OAuth2AuthorizationConsentService authorizationConsentService;

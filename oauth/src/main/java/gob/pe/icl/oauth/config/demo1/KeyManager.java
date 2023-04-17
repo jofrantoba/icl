@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Usuario
  */
-//@Component
+@Component
 public class KeyManager {
     
     public RSAKey rsaKey() throws NoSuchAlgorithmException{
