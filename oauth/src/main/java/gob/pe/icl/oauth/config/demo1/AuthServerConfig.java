@@ -55,7 +55,7 @@ public class AuthServerConfig {
                 // authorization endpoint
                 .exceptionHandling((exceptions) -> exceptions
                 .authenticationEntryPoint(
-                        new LoginUrlAuthenticationEntryPoint("/login"))
+                        new LoginUrlAuthenticationEntryPoint("/custom-login"))
                 )
                 // Accept access tokens for User Info and/or Client Registration
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);

@@ -8,6 +8,7 @@ import gob.pe.icl.oauth.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,7 +29,7 @@ public class WebSecurityConfig{
     @Autowired
     MyUserDetailsService details;
     
-    @Bean
+    /*@Bean
     public SecurityFilterChain securityFilterChainAs(HttpSecurity http) throws Exception{
         http
                 .authorizeHttpRequests((authorize) -> authorize
@@ -37,7 +38,19 @@ public class WebSecurityConfig{
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
-    }    
+    }*/
+    
+    @Bean
+    public SecurityFilterChain securityFilterChainAs(HttpSecurity http) throws Exception{
+        http
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests((authorize) -> authorize
+                .anyRequest().authenticated()
+                )
+                .formLogin(form -> form.loginPage("/custom-login").permitAll());
+
+        return http.build();
+    }
     
     /*@Bean
     public UserDetailsService userDetailsService() {
